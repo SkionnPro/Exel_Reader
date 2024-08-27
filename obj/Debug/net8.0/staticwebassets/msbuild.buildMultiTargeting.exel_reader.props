@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\exel_reader.props" />
+</Project>
