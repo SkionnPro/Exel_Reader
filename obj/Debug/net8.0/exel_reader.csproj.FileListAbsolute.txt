@@ -22,6 +22,7 @@ D:\Extra\Work\Interview\Exel reader\exel_reader\obj\Debug\net8.0\exel_reader.csp
 D:\Extra\Work\Interview\Exel reader\exel_reader\obj\Debug\net8.0\exel_reader.MvcApplicationPartsAssemblyInfo.cache
 D:\Extra\Work\Interview\Exel reader\exel_reader\obj\Debug\net8.0\exel_reader.RazorAssemblyInfo.cache
 D:\Extra\Work\Interview\Exel reader\exel_reader\obj\Debug\net8.0\exel_reader.RazorAssemblyInfo.cs
+D:\Extra\Work\Interview\Exel reader\exel_reader\obj\Debug\net8.0\exel_reader.sourcelink.json
 D:\Extra\Work\Interview\Exel reader\exel_reader\obj\Debug\net8.0\staticwebassets.build.json
 D:\Extra\Work\Interview\Exel reader\exel_reader\obj\Debug\net8.0\staticwebassets.development.json
 D:\Extra\Work\Interview\Exel reader\exel_reader\obj\Debug\net8.0\staticwebassets\msbuild.exel_reader.Microsoft.AspNetCore.StaticWebAssets.props
