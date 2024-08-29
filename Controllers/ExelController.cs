@@ -17,7 +17,7 @@ namespace exel_reader.Controllers{
       return View();
     }
 
-    public async Task<IActionResult> Upload(IFormFile file){
+    public async Task<IActionResult> Upload(IFormFile file, string? mode = null, int page = 1){
       if(file == null || file.Length == 0){
         return BadRequest("No file Selected");
       }

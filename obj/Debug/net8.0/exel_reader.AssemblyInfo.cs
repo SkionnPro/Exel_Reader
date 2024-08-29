@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("exel_reader")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5caf1b3578f5c689165fed979933eff5f840949d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b70772578a25b73001aebabfb9ab5775b04dce39")]
 [assembly: System.Reflection.AssemblyProductAttribute("exel_reader")]
 [assembly: System.Reflection.AssemblyTitleAttribute("exel_reader")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

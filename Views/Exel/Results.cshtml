@@ -5,32 +5,29 @@
 
 @if (Model == null || !Model.Any()){
   <p>No data was found in the uploaded Excel file. Please upload a valid file with data.</p>
-}else{
-  <ul class="nav nav-tabs" id="paymentTab" role="tablist">
+}
+else{
+  <ul class="nav nav-tabs" id="paymentTab">
 
     @foreach (var mode in Model){
       var cleanKey = mode.Key.Replace(" ", "-").ToLower();
 
-        <li class="nav-item" style="cursor: pointer;" role="presentation">
-
-          <a class="nav-link @(Model.Keys.First() == mode.Key ? "active" : "")" id="@cleanKey-tab" data-bs-toggle="tab" data-bs-target="#@cleanKey" role="tab" aria-controls="@cleanKey" aria-selected="@(Model.Keys.First() == mode.Key ? "true" : "false")">
-            @mode.Key
-          </a>
-
-        </li>
-      }
+      <li class="nav-item" style="cursor: pointer;">
+        <a class="nav-link @(Model.Keys.First() == mode.Key ? "active" : "")" id="@cleanKey-tab" data-bs-toggle="tab" data-bs-target="#@cleanKey" >
+          @mode.Key
+        </a>
+      </li>
+    }
   </ul>
-  
+
   <div class="tab-content" id="paymentTabContent">
     @foreach (var mode in Model){
       var cleanKey = mode.Key.Replace(" ", "-").ToLower();
 
-      <div class="tab-pane fade @(Model.Keys.First() == mode.Key ? "show active" : "")"
-        id="@cleanKey" role="tabpanel" aria-labelledby="@cleanKey-tab">
-              
+      <div class="tab-pane fade @(Model.Keys.First() == mode.Key ? "show active" : "")" id="@cleanKey" role="tabpanel" aria-labelledby="@cleanKey-tab">
         <h4>Total Amount: @mode.Value.TotalAmount</h4>
 
-        <table class="table">
+        <table class="table payment-table">
 
           <thead>
             <tr>
@@ -49,9 +46,63 @@
               </tr>
             }
           </tbody>
-          
+
         </table>
+
+        <div class="pagination-controls">
+          <button class="btn btn-primary prev-page" disabled>Previous</button>
+          <span class="page-info">Page 1 of 1</span>
+          <button class="btn btn-primary next-page">Next</button>
+        </div>
       </div>
     }
   </div>
 }
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const pageSize = 50; // Number of items per page
+
+        // Function to update table rows based on the current page
+    function updateTable(table, currentPage) {
+      const rows = table.querySelectorAll('tbody tr');
+      const totalPages = Math.ceil(rows.length / pageSize);
+
+            // Hide all rows initially
+      rows.forEach((row, index) => {
+        row.style.display = (index >= (currentPage - 1) * pageSize && index < currentPage * pageSize) ? '' : 'none';
+      });
+
+            // Update page info and button states
+      const controls = table.closest('.tab-pane').querySelector('.pagination-controls');
+        controls.querySelector('.page-info').textContent = `Page ${currentPage} of ${totalPages}`;
+        controls.querySelector('.prev-page').disabled = (currentPage === 1);
+        controls.querySelector('.next-page').disabled = (currentPage === totalPages);
+    }
+
+        // Initialize pagination for all tables
+    const tables = document.querySelectorAll('.payment-table');
+    tables.forEach(table => {
+      let currentPage = 1;
+
+      updateTable(table, currentPage);
+
+            // Event listeners for pagination controls
+      table.closest('.tab-pane').querySelector('.prev-page').addEventListener('click', () => {
+        if (currentPage > 1) {
+          currentPage--;
+            updateTable(table, currentPage);
+        }
+      });
+
+      table.closest('.tab-pane').querySelector('.next-page').addEventListener('click', () => {
+        const rows = table.querySelectorAll('tbody tr');
+        const totalPages = Math.ceil(rows.length / pageSize);
+          if (currentPage < totalPages) {
+            currentPage++;
+            updateTable(table, currentPage);
+          }
+      });
+    });
+  });
+</script>
